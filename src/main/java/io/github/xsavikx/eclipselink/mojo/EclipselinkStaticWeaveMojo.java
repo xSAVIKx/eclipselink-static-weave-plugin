@@ -19,12 +19,16 @@ package io.github.xsavikx.eclipselink.mojo;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugins.annotations.*;
+import org.apache.maven.plugins.annotations.LifecyclePhase;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.plugins.annotations.ResolutionScope;
 import org.apache.maven.project.MavenProject;
 import org.eclipse.persistence.logging.AbstractSessionLog;
 import org.eclipse.persistence.logging.SessionLog;
 import org.eclipse.persistence.tools.weaving.jpa.StaticWeaveProcessor;
 
+import javax.inject.Inject;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
@@ -144,14 +148,14 @@ public class EclipselinkStaticWeaveMojo extends AbstractMojo {
    * The EclipseLink logging information is always given in Maven INFO
    * loglevel.
    */
-  @Parameter(property = "weave.logLevel", defaultValue = SessionLog.FINE_LABEL)
+  @Parameter(property = "weave.logLevel", defaultValue = "FINE")
   private String logLevel;
 
   /**
    * The Maven project to have environment information like the classpath.
    * This property is set by maven.
    */
-  @Component
+  @Inject
   private MavenProject project;
 
   /**
@@ -164,8 +168,7 @@ public class EclipselinkStaticWeaveMojo extends AbstractMojo {
 
       List<URL> classpath = buildClassPath();
 
-      StaticWeaveProcessor weave = new StaticWeaveProcessor(source,
-          target);
+      StaticWeaveProcessor weave = new StaticWeaveProcessor(source, target);
       if (!classpath.isEmpty()) {
         URLClassLoader classLoader = new URLClassLoader(
             classpath.toArray(new URL[]{}), Thread.currentThread()
@@ -219,13 +222,13 @@ public class EclipselinkStaticWeaveMojo extends AbstractMojo {
    * @throws MalformedURLException
    */
   private List<URL> buildClassPath() throws MalformedURLException {
-    List<URL> urls = new ArrayList<URL>();
+    List<URL> urls = new ArrayList<>();
     if (project == null) {
       getLog().error(
           "MavenProject is empty, unable to build ClassPath. No Models can be woven.");
 
     } else {
-      Set<Artifact> artifacts = (Set<Artifact>) project.getArtifacts();
+      Set<Artifact> artifacts = project.getArtifacts();
       for (Artifact a : artifacts) {
         urls.add(a.getFile().toURI().toURL());
       }
