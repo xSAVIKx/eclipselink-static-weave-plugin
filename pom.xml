@@ -5,11 +5,12 @@
 	<groupId>io.github.xsavikx</groupId>
 	<artifactId>staticweave-maven-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>1.1.0</version>
+	<version>1.0.0</version>
 	<name>eclipselink-staticweave-maven-plugin Maven Plugin</name>
 	<url>https://github.com/xSAVIKx/eclipselink-static-weave-plugin</url>
 
 	<properties>
+		<release>false</release>
 		<java.version>1.8</java.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
@@ -217,22 +218,20 @@ Compatible with Java 8 and Maven 3.x.</description>
 			</build>
 		</profile>
 		<profile>
-			<id>ossrh</id>
+			<id>central</id>
 			<activation>
 				<property>
 					<name>publish</name>
-					<value>ossrh</value>
+					<value>central</value>
 				</property>
 			</activation>
 			<distributionManagement>
 				<snapshotRepository>
-					<id>ossrh</id>
-					<url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+					<id>central</id>
 				</snapshotRepository>
 				<repository>
-					<id>ossrh</id>
+					<id>central</id>
 					<name>Central Repository OSSRH</name>
-					<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 				</repository>
 			</distributionManagement>
 			<build>
@@ -281,14 +280,14 @@ Compatible with Java 8 and Maven 3.x.</description>
 						</executions>
 					</plugin>
 					<plugin>
-						<groupId>org.sonatype.plugins</groupId>
-						<artifactId>nexus-staging-maven-plugin</artifactId>
-						<version>1.6.14</version>
+						<groupId>org.sonatype.central</groupId>
+						<artifactId>central-publishing-maven-plugin</artifactId>
+						<version>0.7.0</version>
 						<extensions>true</extensions>
 						<configuration>
-							<serverId>ossrh</serverId>
-							<nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
-							<autoReleaseAfterClose>true</autoReleaseAfterClose>
+							<publishingServerId>central</publishingServerId>
+							<autoPublish>true</autoPublish>
+							<waitUntil>published</waitUntil>
 						</configuration>
 					</plugin>
 					<plugin>
