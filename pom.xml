@@ -180,6 +180,7 @@ Compatible with Java 8 and Maven 3.x.</description>
 				<plugins>
 					<plugin>
 						<artifactId>maven-source-plugin</artifactId>
+						<version>3.3.1</version>
 						<executions>
 							<execution>
 								<id>attach-sources</id>
@@ -191,6 +192,7 @@ Compatible with Java 8 and Maven 3.x.</description>
 					</plugin>
 					<plugin>
 						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>3.11.2</version>
 						<executions>
 							<execution>
 								<id>attach-javadocs</id>
@@ -245,6 +247,7 @@ Compatible with Java 8 and Maven 3.x.</description>
 				<plugins>
 					<plugin>
 						<artifactId>maven-source-plugin</artifactId>
+						<version>3.3.1</version>
 						<executions>
 							<execution>
 								<id>attach-sources</id>
@@ -256,6 +259,7 @@ Compatible with Java 8 and Maven 3.x.</description>
 					</plugin>
 					<plugin>
 						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>3.11.2</version>
 						<executions>
 							<execution>
 								<id>attach-javadocs</id>
