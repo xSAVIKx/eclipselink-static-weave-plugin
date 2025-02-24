@@ -303,7 +303,6 @@ Compatible with Java 8 and Maven 3.x.</description>
 						<configuration>
 							<publishingServerId>central</publishingServerId>
 							<autoPublish>true</autoPublish>
-							<waitUntil>published</waitUntil>
 						</configuration>
 					</plugin>
 					<plugin>
