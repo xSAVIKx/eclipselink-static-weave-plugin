@@ -42,6 +42,13 @@ Compatible with Java 8 and Maven 3.x.</description>
 		</license>
 	</licenses>
 
+	<developers>
+		<developer>
+			<id>xSAVIKx</id>
+			<name>Yurii Serhiichuk</name>
+		</developer>
+	</developers>
+
 	<build>
 		<finalName>eclipselink-staticweave-maven-plugin</finalName>
 		<plugins>
