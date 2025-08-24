@@ -5,7 +5,7 @@
 	<groupId>io.github.xsavikx</groupId>
 	<artifactId>staticweave-maven-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>1.1.0</version>
+	<version>1.1.1</version>
 	<name>eclipselink-staticweave-maven-plugin Maven Plugin</name>
 	<url>https://github.com/xSAVIKx/eclipselink-static-weave-plugin</url>
 
@@ -17,7 +17,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<javadoc.opts>-Xdoclint:none</javadoc.opts>
-		<eclipselink.version>2.7.13</eclipselink.version>
+		<eclipselink.version>2.7.16</eclipselink.version>
 	</properties>
 
 	<description>Maven Plugin for static weaving with EclipseLink.
@@ -57,7 +57,7 @@ Compatible with Java 8 and Maven 3.x.</description>
 					not recognized correctly. -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.13.0</version>
+				<version>3.14.0</version>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
@@ -69,7 +69,7 @@ Compatible with Java 8 and Maven 3.x.</description>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-plugin-plugin</artifactId>
-				<version>3.13.1</version>
+				<version>3.15.1</version>
 				<executions>
 					<execution>
 						<id>default-descriptor</id>
@@ -139,21 +139,21 @@ Compatible with Java 8 and Maven 3.x.</description>
 		<dependency>
 			<groupId>org.apache.maven</groupId>
 			<artifactId>maven-plugin-api</artifactId>
-			<version>3.9.9</version>
+			<version>3.9.11</version>
 			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.maven.plugin-tools</groupId>
 			<artifactId>maven-plugin-annotations</artifactId>
-			<version>3.15.0</version>
+			<version>3.15.1</version>
 			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.maven</groupId>
 			<artifactId>maven-core</artifactId>
-			<version>3.9.8</version>
+			<version>3.9.11</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -197,7 +197,7 @@ Compatible with Java 8 and Maven 3.x.</description>
 					</plugin>
 					<plugin>
 						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>3.11.2</version>
+						<version>3.11.3</version>
 						<executions>
 							<execution>
 								<id>attach-javadocs</id>
@@ -210,7 +210,7 @@ Compatible with Java 8 and Maven 3.x.</description>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
-						<version>3.2.6</version>
+						<version>3.2.8</version>
 						<executions>
 							<execution>
 								<id>sign-artifacts</id>
@@ -264,7 +264,7 @@ Compatible with Java 8 and Maven 3.x.</description>
 					</plugin>
 					<plugin>
 						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>3.11.2</version>
+						<version>3.11.3</version>
 						<executions>
 							<execution>
 								<id>attach-javadocs</id>
@@ -277,7 +277,7 @@ Compatible with Java 8 and Maven 3.x.</description>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
-						<version>3.2.6</version>
+						<version>3.2.8</version>
 						<executions>
 							<execution>
 								<id>sign-artifacts</id>
@@ -298,7 +298,7 @@ Compatible with Java 8 and Maven 3.x.</description>
 					<plugin>
 						<groupId>org.sonatype.central</groupId>
 						<artifactId>central-publishing-maven-plugin</artifactId>
-						<version>0.7.0</version>
+						<version>0.8.0</version>
 						<extensions>true</extensions>
 						<configuration>
 							<publishingServerId>central</publishingServerId>
@@ -308,7 +308,7 @@ Compatible with Java 8 and Maven 3.x.</description>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-enforcer-plugin</artifactId>
-						<version>3.5.0</version>
+						<version>3.6.1</version>
 						<executions>
 							<execution>
 								<id>enforce</id>
@@ -332,7 +332,7 @@ Compatible with Java 8 and Maven 3.x.</description>
 							<dependency>
 								<groupId>org.kordamp.maven</groupId>
 								<artifactId>pomchecker-enforcer-rules</artifactId>
-								<version>1.13.0</version>
+								<version>1.14.0</version>
 							</dependency>
 						</dependencies>
 					</plugin>
