@@ -1,0 +1,15 @@
+import java.io.File;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+
+File classFile = new File(basedir, "target/weaved-classes/it/sample/model/Person.class");
+if (!classFile.isFile()) {
+	throw new IllegalStateException("Missing woven class file: " + classFile);
+}
+
+String classContents = new String(Files.readAllBytes(classFile.toPath()), StandardCharsets.ISO_8859_1);
+if (classContents.indexOf("_persistence_") < 0) {
+	throw new IllegalStateException("Expected woven bytecode marker in " + classFile);
+}
+
+return true;
