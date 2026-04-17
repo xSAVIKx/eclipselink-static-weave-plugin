@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Plugin which performs Eclipselink static weaving. Use the weave goal to
+ * Plugin which performs EclipseLink static weaving. Use the weave goal to
  * execute.
  * <p>
  * Internally the StaticWeaveProcessor is used, like described in <a href=
@@ -53,47 +53,47 @@ import java.util.Set;
  *
  * <pre>
  * &lt;build&gt;
- *   	...
+ *   ...
  *   &lt;plugins&gt;
- * 			 &lt;plugin&gt;
- * 				&lt;artifactId&gt;staticweave-maven-plugin&lt;/artifactId&gt;
- * 				&lt;groupId&gt;de.empulse.eclipselink&lt;/groupId&gt;
- * 				&lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
- * 				&lt;executions&gt;
- * 					&lt;execution&gt;
- * 						&lt;phase&gt;process-classes&lt;/phase&gt;
- * 						&lt;goals&gt;
- * 							&lt;goal&gt;weave&lt;/goal&gt;
- * 						&lt;/goals&gt;
- * 						&lt;configuration&gt;
- * 							&lt;persistenceXMLLocation&gt;META-INF/persistence.xml&lt;/persistenceXMLLocation&gt;
- * 							&lt;logLevel&gt;FINE&lt;/logLevel&gt;
- * 						&lt;/configuration&gt;
- * 					&lt;/execution&gt;
- * 				&lt;/executions&gt;
- * 				&lt;dependencies&gt;
- * 					&lt;dependency&gt;
- * 						&lt;groupId&gt;org.eclipse.persistence&lt;/groupId&gt;
- * 						&lt;artifactId&gt;org.eclipse.persistence.jpa&lt;/artifactId&gt;
- * 						&lt;version&gt;${eclipselink.version}&lt;/version&gt;
- * 					&lt;/dependency&gt;
- * 				&lt;/dependencies&gt;
- * 			&lt;/plugin&gt;
+ *     &lt;plugin&gt;
+ *       &lt;groupId&gt;io.github.xsavikx&lt;/groupId&gt;
+ *       &lt;artifactId&gt;staticweave-maven-plugin&lt;/artifactId&gt;
+ *       &lt;version&gt;${staticweave-maven-plugin.version}&lt;/version&gt;
+ *       &lt;executions&gt;
+ *         &lt;execution&gt;
+ *           &lt;phase&gt;process-classes&lt;/phase&gt;
+ *           &lt;goals&gt;
+ *             &lt;goal&gt;weave&lt;/goal&gt;
+ *           &lt;/goals&gt;
+ *           &lt;configuration&gt;
+ *             &lt;persistenceXMLLocation&gt;META-INF/persistence.xml&lt;/persistenceXMLLocation&gt;
+ *             &lt;logLevel&gt;FINE&lt;/logLevel&gt;
+ *           &lt;/configuration&gt;
+ *         &lt;/execution&gt;
+ *       &lt;/executions&gt;
+ *       &lt;dependencies&gt;
+ *         &lt;dependency&gt;
+ *           &lt;groupId&gt;org.eclipse.persistence&lt;/groupId&gt;
+ *           &lt;artifactId&gt;eclipselink&lt;/artifactId&gt;
+ *           &lt;version&gt;${eclipselink.version}&lt;/version&gt;
+ *         &lt;/dependency&gt;
+ *       &lt;/dependencies&gt;
+ *     &lt;/plugin&gt;
  *
- *   		...
- *   	&lt;/plugins&gt;
- *   	...
+ *   ...
+ *   &lt;/plugins&gt;
+ *   ...
  * &lt;/build&gt;
  *
  * </pre>
  * <p>
- * <p>
  * Heavily inspired by <a
  * href="https://code.google.com/p/eclipselink-staticweave-maven-plugin/"
  * >https://code.google.com/p/eclipselink-staticweave-maven-plugin</a>.
+ * </p>
  * <p>
- * This is a updated version to be compatible with Java 8, Maven 3.x and
- * EclipseLink 2.5.1.
+ * This plugin targets Java 8 and Maven 3.x and is validated against
+ * EclipseLink 2.7.16, 3.0.4, and 4.0.9.
  * </p>
  *
  * @author Christoph Guse
@@ -106,9 +106,6 @@ public class EclipselinkStaticWeaveMojo extends AbstractMojo {
    * Give here the location of your persistence.xml file. This property is
    * optional. If not set the default location META-INF/persistence.xml is
    * used.
-   *
-   * <pre>
-   * </pre>
    */
   @Parameter(property = "weave.persistenceXMLLocation")
   private String persistenceXMLLocation;
@@ -121,7 +118,7 @@ public class EclipselinkStaticWeaveMojo extends AbstractMojo {
   private String source;
 
   /**
-   * The location for the weaved classes. This property is optional, default
+   * The location for the woven classes. This property is optional, default
    * value is ${project.build.outputDirectory}.
    */
   @Parameter(property = "project.build.outputDirectory")
