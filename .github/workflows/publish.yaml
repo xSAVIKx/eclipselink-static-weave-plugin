@@ -27,7 +27,7 @@ jobs:
           gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
           gpg-passphrase: MAVEN_GPG_PASSPHRASE
       - name: Publish GitHub Packages package
-        run: ./mvnw clean --batch-mode -P default,github -Dpublish=github deploy
+        run: ./mvnw clean --batch-mode -P github -Dpublish=github -Dinvoker.skip=true deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
@@ -50,7 +50,7 @@ jobs:
           gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
           gpg-passphrase: MAVEN_GPG_PASSPHRASE
       - name: Publish to the Maven Central Repository
-        run: ./mvnw clean --batch-mode -P default,central -Dpublish=central deploy
+        run: ./mvnw clean --batch-mode -P central -Dpublish=central -Dinvoker.skip=true deploy
         env:
           MAVEN_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.CENTRAL_TOKEN }}
