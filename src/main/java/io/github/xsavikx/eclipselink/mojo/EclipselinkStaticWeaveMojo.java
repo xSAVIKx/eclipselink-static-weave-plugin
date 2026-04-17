@@ -99,7 +99,7 @@ import java.util.Set;
  * @author Christoph Guse
  * @author Yurii Serhiichuk
  */
-@Mojo(name = "weave", defaultPhase = LifecyclePhase.PROCESS_CLASSES, requiresDependencyResolution = ResolutionScope.COMPILE)
+@Mojo(name = "weave", defaultPhase = LifecyclePhase.PROCESS_CLASSES, requiresDependencyResolution = ResolutionScope.COMPILE, threadSafe = true)
 public class EclipselinkStaticWeaveMojo extends AbstractMojo {
 
   /**
