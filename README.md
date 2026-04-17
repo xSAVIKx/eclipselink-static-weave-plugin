@@ -2,7 +2,7 @@
 Plugin which performs Eclipselink static weaving. Use the weave goal to execute. 
 
 Heavily inspired by https://code.google.com/p/eclipselink-staticweave-maven-plugin. 
-This is an updated and enhanced version to be compatible with Java 8 and Maven 3.x, and it is validated against EclipseLink 2.7.16, 3.0.4, and 4.0.9.
+This is an updated and enhanced version to be compatible with Java 8 and Maven 3.x, and it is validated against EclipseLink 2.7.16, 3.0.4, 4.0.9, and 5.0.0.
 
 Internally the StaticWeaveProcessor is used, like described in the EclipseLink Wiki https://wiki.eclipse.org/EclipseLink/UserGuide/JPA/Advanced_JPA_Development/Performance/Weaving/Static_Weaving#Use_the_Command_Line. 
 
@@ -15,6 +15,7 @@ The plugin is compiled against EclipseLink 2.7.16 and tested against these versi
 * 2.7.16
 * 3.0.4
 * 4.0.9
+* 5.0.0
 
 Use a plugin dependency that matches the EclipseLink major version used by your application.
 
@@ -89,5 +90,6 @@ Use the Maven wrapper from the repository root:
 * `.\mvnw.cmd clean verify "-Declipselink.version=2.7.16"` validates compilation and weaving against EclipseLink 2.7.16.
 * `.\mvnw.cmd clean verify "-Declipselink.version=3.0.4"` validates compilation and weaving against EclipseLink 3.0.4.
 * `.\mvnw.cmd clean verify "-Declipselink.version=4.0.9"` validates compilation and weaving against EclipseLink 4.0.9.
+* `.\mvnw.cmd clean verify "-Declipselink.version=5.0.0"` validates compilation and weaving against EclipseLink 5.0.0.
 
 Happy weaving!

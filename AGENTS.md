@@ -1,7 +1,7 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-This repository contains a single Maven plugin module, `staticweave-maven-plugin`. Source lives under `src/main/java/io/github/xsavikx/eclipselink/mojo`, with the main entry point in `EclipselinkStaticWeaveMojo.java` and supporting logging code in `LogWriter.java`. Maven integration-test fixtures live under `src/it/` and cover EclipseLink `2.7.16`, `3.0.4`, and `4.0.9`. Build outputs go to `target/`. Maven wrapper files (`mvnw`, `mvnw.cmd`, `.mvn/`) should be used for repeatable local builds.
+This repository contains a single Maven plugin module, `staticweave-maven-plugin`. Source lives under `src/main/java/io/github/xsavikx/eclipselink/mojo`, with the main entry point in `EclipselinkStaticWeaveMojo.java` and supporting logging code in `LogWriter.java`. Maven integration-test fixtures live under `src/it/` and cover EclipseLink `2.7.16`, `3.0.4`, `4.0.9`, and `5.0.0`. Build outputs go to `target/`. Maven wrapper files (`mvnw`, `mvnw.cmd`, `.mvn/`) should be used for repeatable local builds.
 
 ## Build, Test, and Development Commands
 Use the Maven wrapper from the repository root:
@@ -9,6 +9,7 @@ Use the Maven wrapper from the repository root:
 - `.\mvnw.cmd clean verify` builds the plugin, runs the standard lifecycle plus invoker-based compatibility tests, and is the default pre-PR check.
 - `.\mvnw.cmd clean verify "-Declipselink.version=3.0.4"` validates the plugin against the EclipseLink 3.x compatibility target.
 - `.\mvnw.cmd clean verify "-Declipselink.version=4.0.9"` validates the plugin against the EclipseLink 4.x compatibility target.
+- `.\mvnw.cmd clean verify "-Declipselink.version=5.0.0"` validates the plugin against the EclipseLink 5.x compatibility target.
 - `.\mvnw.cmd test` runs unit tests only; use this only for fast feedback if unit tests are added later.
 - `.\mvnw.cmd clean package` creates the plugin JAR in `target/`.
 - `.\mvnw.cmd help:describe -Dplugin=io.github.xsavikx:staticweave-maven-plugin -Ddetail` inspects generated plugin metadata.

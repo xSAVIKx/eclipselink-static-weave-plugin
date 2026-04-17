@@ -92,7 +92,7 @@ import java.util.Set;
  * </p>
  * <p>
  * This plugin targets Java 8 and Maven 3.x and is validated against
- * EclipseLink 2.7.16, 3.0.4, and 4.0.9.
+ * EclipseLink 2.7.16, 3.0.4, 4.0.9, and 5.0.0.
  * </p>
  *
  * @author Christoph Guse
