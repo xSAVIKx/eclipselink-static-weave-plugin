@@ -28,7 +28,6 @@ import org.eclipse.persistence.logging.AbstractSessionLog;
 import org.eclipse.persistence.logging.SessionLog;
 import org.eclipse.persistence.tools.weaving.jpa.StaticWeaveProcessor;
 
-import javax.inject.Inject;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
@@ -152,7 +151,7 @@ public class EclipselinkStaticWeaveMojo extends AbstractMojo {
    * The Maven project to have environment information like the classpath.
    * This property is set by maven.
    */
-  @Inject
+  @Parameter(defaultValue = "${project}", readonly = true, required = true)
   private MavenProject project;
 
   /**
@@ -160,6 +159,7 @@ public class EclipselinkStaticWeaveMojo extends AbstractMojo {
    * StaticWeaveProcessor which does the weaving.
    */
   public void execute() throws MojoExecutionException {
+    URLClassLoader classLoader = null;
     try {
       getLog().info("Start EclipseLink static weaving...");
 
@@ -167,7 +167,7 @@ public class EclipselinkStaticWeaveMojo extends AbstractMojo {
 
       StaticWeaveProcessor weave = new StaticWeaveProcessor(source, target);
       if (!classpath.isEmpty()) {
-        URLClassLoader classLoader = new URLClassLoader(
+        classLoader = new URLClassLoader(
             classpath.toArray(new URL[]{}), Thread.currentThread()
             .getContextClassLoader());
         weave.setClassLoader(classLoader);
@@ -186,6 +186,14 @@ public class EclipselinkStaticWeaveMojo extends AbstractMojo {
       throw new MojoExecutionException("Failed", e);
     } catch (URISyntaxException e) {
       throw new MojoExecutionException("Failed", e);
+    } finally {
+      if (classLoader != null) {
+        try {
+          classLoader.close();
+        } catch (IOException e) {
+          getLog().warn("Failed to close EclipseLink class loader.", e);
+        }
+      }
     }
   }
 
